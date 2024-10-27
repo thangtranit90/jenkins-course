@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# this script is only tested on ubuntu xenial
+# this script is install docker on host ec2 run jenkins server container
 
 # install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
