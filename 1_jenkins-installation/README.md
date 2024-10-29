@@ -60,8 +60,8 @@ docker ps | grep jenkins-server
 - Lấy `password` của user admin và điền vào để hoàn thành đăng nhập
 
 ```sh
-# Lấy password của user admin
-cat /var/jenkins_home/secrets/initialAdminPassword
+# Lấy password của user admin ben trong container
+docker exec -it jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 - Chọn cài đặt các Plugin mặc định

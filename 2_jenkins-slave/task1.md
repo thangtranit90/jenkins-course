@@ -8,15 +8,26 @@ Trong task này, bạn được yêu cầu tạo 1 Jenkins Slave container, sau 
 
 ### 1.2.  Sửa install script để run Jenkins Slave
 
-- Tạo cặp keypair để cho **Jenkins Master** có thể kết nối được tới **Jenkins Slave** qua **SSH**
+- Tạo cặp keypair để cho **Jenkins Master** có thể kết nối được tới **Jenkins Slave** qua **SSH**. 
+- Lưu ý định dạng keypair cần phải có định dạng **RSA** như sau:
+```
+-----BEGIN RSA PRIVATE KEY-----
+...
+...
+...
+-----END RSA PRIVATE KEY-----
+```
 
-```/bin/bash
+```
 # Di chuyển tới thư mục của Hands-on
 cd jenkins-course/2_jenkins-slave/scripts
 
 # Sinh ssh keypair và lưu tại thư mực đang làm việc
-# Nhập <path_to_repo>/2_jenkins-slave/scripts/id_rsa khi được yêu cầu 'Enter file in which to save the key'
-ssh-keygen -t rsa
+# tạo keypair ngay tại thư mục đang làm việc
+ssh-keygen -t rsa -b 2048 -f ./id_rsa
+# chuyển đổi định dạng private key từ OPEN SSH PRIVATE KEY sang RSA PRIVATE KEY
+ssh-keygen -p -m PEM -f ./id_rsa
+
 
 # Change mode private key
 sudo chmod 400 id_rsa
